@@ -9,7 +9,7 @@ def get_value(input_str):
         (in that order) to form a single two-digit number.
     """
     digits = sub(r'[^\d]', '', input_str)
-    if len(digits) >=1:
+    if len(digits) >0:
         return int(digits[0] + digits[-1])
     else:
         print(f"Error: calibration value not valid. Str: {input_str}.")

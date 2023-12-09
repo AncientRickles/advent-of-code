@@ -14,7 +14,15 @@ def get_value(input_str):
     subs = {'one': "1", 'two': "2", 'three': '3', 'four': '4', \
             'five': '5', 'six': '6', 'seven': '7', 'eight':'8', 'nine':'9'}
     for sub_key in subs.keys():
+        """
+        If we find a number word in subs above, we perform a substitution to ensure
+            that we can extract subsequent adjacent number words.
+            Ex: sub "one" for "one1one" in: "twone" -> twone1one -> two2twone1one
+            This allows us to extract digits (both 2 and 1) at the end. 
+        """
         digits = sub(sub_key, f'{sub_key}{subs[sub_key]}{sub_key}', digits)
+
+    # Perform digit extraction
     digits = sub(r'[^\d]', '', digits)
 
     if len(digits) >=1:
